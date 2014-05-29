@@ -5,7 +5,8 @@ omit =
     # osx library files when not running in virtualenv
     /Library/*
     /System/*
-    mysite/settings.py
+    django-polls/settings.py
+    polls/migrations/*
 
 [report]
 ignore_errors = True
