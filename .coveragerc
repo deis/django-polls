@@ -1,0 +1,18 @@
+[run]
+omit =
+    */venv/*
+    */virtualenv/*
+    # osx library files when not running in virtualenv
+    /Library/*
+    /System/*
+    mysite/settings.py
+
+[report]
+ignore_errors = True
+exclude_lines =
+    pragma: no cover
+    raise NotImplementedError
+    if __name__ == .__main__.:
+
+[html]
+title = Deis Coverage Report
