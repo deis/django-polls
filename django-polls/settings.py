@@ -7,9 +7,9 @@ https://docs.djangoproject.com/en/1.6/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import urlparse
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -57,7 +57,6 @@ WSGI_APPLICATION = 'django-polls.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-import urlparse
 DATABASES = {}
 if 'DATABASE_URL' in os.environ:
     url = urlparse.urlparse(os.environ['DATABASE_URL'])
@@ -75,7 +74,7 @@ if 'DATABASE_URL' in os.environ:
 else:
     DATABASES['default'] = {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'dev.db',
+        'NAME': 'sqlite.db',
     }
 
 # Internationalization
