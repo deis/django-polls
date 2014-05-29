@@ -22,7 +22,15 @@ class Poll(models.Model):
 class Choice(models.Model):
     poll = models.ForeignKey(Poll)
     choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
+
+    @property
+    def votes(self):
+        return len(self.vote_set.all())
 
     def __unicode__(self):
         return self.choice_text
+
+
+class Vote(models.Model):
+    choice = models.ForeignKey(Choice)
+    comment = models.TextField()

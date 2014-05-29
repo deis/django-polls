@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse
 from django.utils import timezone
 from django.views import generic
 
-from .models import Choice, Poll
+from .models import Choice, Poll, Vote
 
 
 class IndexView(generic.ListView):
@@ -49,8 +49,10 @@ def vote(request, poll_id):
             'error_message': "You didn't select a choice.",
         })
     else:
-        selected_choice.votes += 1
-        selected_choice.save()
+        Vote.objects.create(
+            choice=selected_choice,
+            comment=request.POST.get('comment', '')
+        )
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
