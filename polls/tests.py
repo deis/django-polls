@@ -1,5 +1,4 @@
 import datetime
-import json
 
 from django.core.urlresolvers import reverse
 from django.utils import timezone
@@ -18,6 +17,7 @@ def create_poll(question, days):
         question=question,
         pub_date=timezone.now() + datetime.timedelta(days=days),
     )
+
 
 def create_choice(poll_id):
     """
@@ -125,6 +125,7 @@ class PollDetailViewTests(TestCase):
         past_poll = create_poll(question='Past Poll.', days=-5)
         response = self.client.get(reverse('polls:detail', args=(past_poll.id,)))
         self.assertContains(response, past_poll.question, status_code=200)
+
 
 class PollViewVoteTests(TestCase):
 
