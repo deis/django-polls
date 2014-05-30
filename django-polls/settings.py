@@ -1,5 +1,5 @@
 """
-Django settings for mysite project.
+Django settings for djngo-polls.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
